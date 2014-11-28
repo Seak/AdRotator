@@ -1,10 +1,16 @@
 <!--#include file="conn.asp" -->
 <!--#include file="inc_config.asp" -->
 <%
+ID = Request.QueryString("id")
+Sort = Request.QueryString("sort")
+
+If ID <> "" Then Where = "Where ID = " & ID
+If Sort <> "" Then Where = "Where intSortID = " & Sort
+
 ConnectionDatabase
 
 Set Rs = Server.CreateObject("ADODB.Recordset")
-Rs.Open "Select ID, strAdName, strAdBanner, strAdExplain, intAdShow, intAdClick, dtmAddDate From [AdList]", Conn, 3, 2
+Rs.Open "Select ID, strAdName, strAdBanner, strAdExplain, intAdShow, intAdClick, dtmAddDate From [AdList]" & Where, Conn, 3, 2
 If Not(Rs.EOF) Then
 	Rs.MoveFirst
 	Randomize

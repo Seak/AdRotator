@@ -16,7 +16,7 @@ ID = Request.QueryString("id")
 ConnectionDatabase
 
 Set Rs = Server.CreateObject("ADODB.Recordset")
-Rs.Open "Select ID, strAdName, strAdURL, strAdBanner, strAdExplain, intAdShow, intAdClick, dtmAddDate From [AdList] Where ID = " & ID, Conn, 3, 1
+Rs.Open "Select ID, intSortID, strAdName, strAdURL, strAdBanner, strAdExplain, intAdShow, intAdClick, dtmAddDate From [AdList] Where ID = " & ID, Conn, 3, 1
 %>
 <table width="300" align="center" cellpadding="2" cellspacing="1" bgcolor="#3F8805">
   <form name="form1" method="post" action="admin_adeditsave.asp?id=<%= ID %>">
@@ -24,6 +24,24 @@ Rs.Open "Select ID, strAdName, strAdURL, strAdBanner, strAdExplain, intAdShow, i
       <td><div align="center"><font color="#FFFFFF">编辑广告</font></div></td>
     </tr>
     <tr> 
+      <td align="center" bgcolor="#EEFEE0">分类： 
+        <select name="intSortID" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt">
+<%
+Set RsSort = Server.CreateObject("ADODB.Recordset")
+RsSort.Open "Select * From [AdSort]", Conn, 3, 1
+Do While Not RsSort.EOF
+%>
+          <option value="<%= RsSort("ID") %>"<% If RsSort("ID") = Rs("intSortID") Then Response.Write(" Selected") %>><%= RsSort("strSortName") %></option>
+<%
+	RsSort.MoveNext       
+Loop
+RsSort.Close
+Set RsSort = Nothing
+%>
+        </select>
+        </td>
+    </tr>
+    <tr>
       <td align="center" bgcolor="#EEFEE0">名称： 
         <input name="strAdName" type="text" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" value="<%= Rs("strAdName") %>" size="25"></td>
     </tr>
@@ -40,11 +58,11 @@ Rs.Open "Select ID, strAdName, strAdURL, strAdBanner, strAdExplain, intAdShow, i
         <input name="strAdExplain" type="text" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" value="<%= Rs("strAdExplain") %>" size="25"></td>
     </tr>
     <tr> 
-      <td align="center" bgcolor="#EEFEE0">时间：
+      <td align="center" bgcolor="#EEFEE0">时间： 
         <input name="dtmAddDate" type="text" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" value="<%= Rs("dtmAddDate") %>" size="25"></td>
     </tr>
-    <tr>
-      <td align="center" bgcolor="#EEFEE0">显示：
+    <tr> 
+      <td align="center" bgcolor="#EEFEE0">显示： 
         <input name="intAdShow" type="text" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" value="<%= Rs("intAdShow") %>" size="7">
         　点击： 
         <input name="intAdClick" type="text" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" value="<%= Rs("intAdClick") %>" size="7"></td>

@@ -15,8 +15,14 @@
     <td><div align="center">
         <p><font color="#0000FF" size="5" face="隶书">参考代码</font></p>
         <p>调用方法：<br>
-          1.随机显示所有广告：
-          <textarea name="textarea" cols="55" rows="2" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt"><script src="AdRotator/show.asp"></script></textarea>
+          1.随机显示所有的广告： 
+          <textarea name="textarea" cols="55" rows="2" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt"><script src="<%= Path %>show.asp"></script></textarea>
+          <br>
+          2.固定显示某一条广告： 
+          <textarea name="textarea2" cols="55" rows="2" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt"><script src="<%= Path %>show.asp?id=n"></script></textarea>
+          <br>
+          3.随机显示某分类广告： 
+          <textarea name="textarea3" cols="55" rows="2" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt"><script src="<%= Path %>show.asp?sort=n"></script></textarea>
         </p>
       </div></td>
   </tr>

@@ -1,9 +1,11 @@
 <%
 Dim Rs
 Dim ID
+Dim Sort, Where
 Dim AdmName, AdmPassword, Path, RecordPerPage, Version
 Dim NewAdmName, NewAdmPassword, NewPath, NewRecordPerPage
 Dim strAdName, strAdURL, strAdBanner, strAdExplain, intAdShow, intAdClick, dtmAddDate
+Dim RsSort, strSortName, intSortID
 Dim absPageNum, TotalPages, absRecordNum
 
 ConnectionDatabase
@@ -21,5 +23,5 @@ Set Rs = Nothing
 
 CloseDatabase
 
-Version = "1.0"
+Version = "1.1"
 %>

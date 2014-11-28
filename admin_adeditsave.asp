@@ -3,6 +3,7 @@
 <!--#include file="inc_check.asp" -->
 <%
 ID = CInt(Request.QueryString("id"))
+intSortID = Request.Form("intSortID")
 strAdName = Request.Form("strAdName")
 strAdURL = Request.Form("strAdURL")
 strAdBanner = Request.Form("strAdBanner")
@@ -13,7 +14,7 @@ dtmAddDate = Request.Form("dtmAddDate")
 
 If ID <> "" And strAdName <> "" And strAdURL <> "" And strAdBanner <> "" And strAdExplain <> "" And intAdShow <> "" And intAdClick <> "" And dtmAddDate <> "" Then
 	ConnectionDatabase
-	Conn.Execute("Update [AdList] Set strAdName = '"& strAdName &"', strAdURL = '"& strAdURL &"', strAdBanner = '"& strAdBanner &"', strAdExplain = '"& strAdExplain &"', intAdShow = '"& intAdShow &"', intAdClick = '"& intAdClick &"', dtmAddDate = '"& dtmAddDate &"' Where ID = " & ID)
+	Conn.Execute("Update [AdList] Set intSortID = '"& intSortID &"', strAdName = '"& strAdName &"', strAdURL = '"& strAdURL &"', strAdBanner = '"& strAdBanner &"', strAdExplain = '"& strAdExplain &"', intAdShow = '"& intAdShow &"', intAdClick = '"& intAdClick &"', dtmAddDate = '"& dtmAddDate &"' Where ID = " & ID)
 	CloseDatabase
 Else
 	Response.Write("<Script>alert('数据填写有误，请核对后重新填写！');history.back();</Script>")

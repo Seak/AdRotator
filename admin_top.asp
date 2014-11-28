@@ -9,6 +9,6 @@
 </head>
 
 <body bgcolor="#0AA000" topmargin="4">
-<font color="#FFFFFF">程序名称：平龙认广告轮显系统　当前版本：<%= Version %>　<script src="http://www.pnnic.com/product/getnews.asp?name=AdRotator&Version=<%= Version %>"></script></font>
+<font color="#FFFFFF">程序名称：平龙认广告轮显系统　当前版本：<%= Version %>　<script src="http://fm90.pnnic.com/down/product/getnews.asp?name=AdRotator&Version=<%= Version %>"></script></font>
 </body>
 </html>
