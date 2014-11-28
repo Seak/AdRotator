@@ -1,0 +1,41 @@
+BODY
+{
+	FONT-FAMILY: ËÎÌו;
+	FONT-SIZE: 12px;
+	scrollbar-face-color:#EEFEE0;
+	scrollbar-shadow-color:#3F8805;
+	scrollbar-highlight-color:#ffffff;
+	scrollbar-3dlight-color:#ffffff;
+	scrollbar-darkshadow-color:#ffffff;
+	scrollbar-track-color:#ffffff;
+	scrollbar-arrow-color:#3F8805;
+}
+td, p, li
+{
+	FONT-FAMILY: ËÎÌו;
+	FONT-SIZE: 12px;
+}
+A:link
+{
+	FONT-SIZE: 12px;
+	COLOR: #FFFFFF;
+	TEXT-DECORATION: none;
+}
+A:visited
+{
+	FONT-SIZE: 12px;
+	COLOR: #FFFFFF;
+	TEXT-DECORATION: none;
+}
+A:active
+{
+	FONT-SIZE: 12px;
+	COLOR: #EEFEE0;
+	TEXT-DECORATION: none;
+}
+A:hover
+{
+	FONT-SIZE: 12px;
+	COLOR: #EEFEE0;
+	TEXT-DECORATION: none;
+}
