@@ -45,18 +45,25 @@ If Not(Rs.EOF) Then
 %>
 <table width="500" align="center" cellpadding="2" cellspacing="1" bgcolor="#3F8805">
   <tr> 
-    <td width="164"><font color="#FFFFFF">序号：<b><font color="#FF0000"><%= Rs("ID") %></font></b></font></td>
-    <td width="165"><font color="#FFFFFF">分类：<%= Rs("intSortID") %></font></td>
-    <td colspan="2"><font color="#FFFFFF">管理：<a href="admin_adedit.asp?id=<%= Rs("ID") %>" target="_self">编辑</a>　<a href="admin_addeling.asp?id=<%= Rs("ID") %>">删除</a></font></td>
+    <td width="150"><font color="#FFFFFF">序号：<b><font color="#FF0000"><%= Rs("ID") %></font></b></font></td>
+    <td width="150"><font color="#FFFFFF">分类：<%= Rs("intSortID") %></font></td>
+    <td colspan="2"><div align="right"><font color="#FFFFFF">管理：<a href="admin_adedit.asp?id=<%= Rs("ID") %>" target="_self">编辑</a>　<a href="admin_addeling.asp?id=<%= Rs("ID") %>">删除</a></font></div></td>
   </tr>
   <tr> 
-    <td colspan="2" bgcolor="#EEFEE0">名称：<%= Rs("strAdName") %></td>
-    <td colspan="2" bgcolor="#EEFEE0">时间：<%= Rs("dtmAddDate") %></td>
+    <td colspan="4" bgcolor="#EEFEE0">名称：<%= Rs("strAdName") %></td>
   </tr>
   <tr> 
-    <td colspan="2" bgcolor="#EEFEE0">地址：<%= Rs("strAdURL") %></td>
-    <td width="82" bgcolor="#EEFEE0">显示：<%= Rs("intAdShow") %></td>
-    <td width="70" bgcolor="#EEFEE0">点击：<%= Rs("intAdClick") %></td>
+    <td colspan="2" bgcolor="#EEFEE0">时间：<%= Rs("dtmAddDate") %><% If Rs("AdStopDateTime") <> Rs("dtmAddDate") Then Response.Write(" / <b>" & Rs("AdStopDateTime") & "</b>") %>
+    </td>
+    <td width="90" bgcolor="#EEFEE0">显示：<%= Rs("intAdShow") %> 
+      <% If Rs("AdStopShow") <> 0 Then Response.Write("/<b>" & Rs("AdStopShow") & "</b>") %>
+    </td>
+    <td width="90" bgcolor="#EEFEE0">点击：<%= Rs("intAdClick") %> 
+      <% If Rs("AdStopClick") <> 0 Then Response.Write("/<b>" & Rs("AdStopClick") & "</b>") %>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="4" bgcolor="#EEFEE0">地址：<%= Rs("strAdURL") %></td>
   </tr>
   <tr> 
     <td colspan="4" bgcolor="#EEFEE0">图片：<%= Rs("strAdBanner") %></td>

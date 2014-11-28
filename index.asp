@@ -1,5 +1,11 @@
 <!--#include file="conn.asp" -->
 <!--#include file="inc_config.asp" -->
+<%
+Path = "http://" & Request.ServerVariables("SERVER_NAME") & Replace(Request.ServerVariables("SCRIPT_NAME"), "index.asp", "")
+ConnectionDatabase
+Conn.Execute("Update [System] Set Path = '"& Path &"' Where ID= 1")
+CloseDatabase
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">

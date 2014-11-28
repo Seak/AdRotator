@@ -30,11 +30,11 @@
         <input name="RecordPerPage" type="text" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" value="<%= RecordPerPage %>" size="14"></td>
       <td align="center" bgcolor="#EEFEE0">列表中每页显示数量</td>
     </tr>
-    <tr> 
+<!--    <tr> 
       <td align="center" bgcolor="#EEFEE0">路　径： 
         <input name="Path" type="text" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" value="<%= Path %>" size="14"></td>
       <td align="center" bgcolor="#EEFEE0">本系统的安装路径</td>
-    </tr>
+    </tr>-->
     <tr> 
       <td colspan="2" align="center" bgcolor="#EEFEE0"> <input type="submit" name="Submit" value="提交" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt">
         　 

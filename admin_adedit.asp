@@ -16,7 +16,7 @@ ID = Request.QueryString("id")
 ConnectionDatabase
 
 Set Rs = Server.CreateObject("ADODB.Recordset")
-Rs.Open "Select ID, intSortID, strAdName, strAdURL, strAdBanner, strAdExplain, intAdShow, intAdClick, dtmAddDate From [AdList] Where ID = " & ID, Conn, 3, 1
+Rs.Open "Select ID, intSortID, strAdName, strAdURL, strAdBanner, strAdExplain, intAdShow, intAdClick, dtmAddDate, AdStopShow, AdStopClick, AdStopDateTime From [AdList] Where ID = " & ID, Conn, 3, 1
 %>
 <table width="300" align="center" cellpadding="2" cellspacing="1" bgcolor="#3F8805">
   <form name="form1" method="post" action="admin_adeditsave.asp?id=<%= ID %>">
@@ -26,22 +26,22 @@ Rs.Open "Select ID, intSortID, strAdName, strAdURL, strAdBanner, strAdExplain, i
     <tr> 
       <td align="center" bgcolor="#EEFEE0">分类： 
         <select name="intSortID" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt">
-<%
+          <option value="0">共享分类</option>
+          <%
 Set RsSort = Server.CreateObject("ADODB.Recordset")
 RsSort.Open "Select * From [AdSort]", Conn, 3, 1
 Do While Not RsSort.EOF
 %>
           <option value="<%= RsSort("ID") %>"<% If RsSort("ID") = Rs("intSortID") Then Response.Write(" Selected") %>><%= RsSort("strSortName") %></option>
-<%
+          <%
 	RsSort.MoveNext       
 Loop
 RsSort.Close
 Set RsSort = Nothing
 %>
-        </select>
-        </td>
+        </select> </td>
     </tr>
-    <tr>
+    <tr> 
       <td align="center" bgcolor="#EEFEE0">名称： 
         <input name="strAdName" type="text" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" value="<%= Rs("strAdName") %>" size="25"></td>
     </tr>
@@ -66,6 +66,21 @@ Set RsSort = Nothing
         <input name="intAdShow" type="text" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" value="<%= Rs("intAdShow") %>" size="7">
         　点击： 
         <input name="intAdClick" type="text" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" value="<%= Rs("intAdClick") %>" size="7"></td>
+    </tr>
+    <tr> 
+      <td align="center" bgcolor="#EEFEE0">最大显示： 
+        <input name="AdStopShow" type="text" value="<%= Rs("AdStopShow") %>" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" size="10">
+        0为无限制，满足则停止</td>
+    </tr>
+    <tr> 
+      <td align="center" bgcolor="#EEFEE0">最大点击： 
+        <input name="AdStopClick" type="text" value="<%= Rs("AdStopClick") %>" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" size="10">
+        0为无限制，满足则停止</td>
+    </tr>
+    <tr> 
+      <td align="center" bgcolor="#EEFEE0">终止日期： 
+        <input name="AdStopDateTime" type="text" value="<% If Rs("AdStopDateTime") = Rs("dtmAddDate") Then %>0<% Else %><%= Rs("AdStopDateTime") %><% End If %>" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" size="10">
+        0为无限制，满足则停止</td>
     </tr>
     <tr> 
       <td align="center" bgcolor="#EEFEE0"> <input type="submit" name="Submit" value="提交" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt">

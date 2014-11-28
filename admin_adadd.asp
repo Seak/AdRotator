@@ -15,10 +15,11 @@
     <tr> 
       <td><div align="center"><font color="#FFFFFF">添加广告</font></div></td>
     </tr>
-    <tr>
+    <tr> 
       <td align="center" bgcolor="#EEFEE0">分类： 
         <select name="intSortID" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt">
-<%
+          <option value="0">共享分类</option>
+          <%
 ConnectionDatabase
 
 Set Rs = Server.CreateObject("ADODB.Recordset")
@@ -26,7 +27,7 @@ Rs.Open "Select ID, strSortName From [AdSort]", Conn, 3, 1
 Do While Not Rs.EOF
 %>
           <option value="<%= Rs("ID") %>"><%= Rs("strSortName") %></option>
-<%
+          <%
 	Rs.MoveNext       
 Loop
 Rs.Close
@@ -51,6 +52,21 @@ CloseDatabase
     <tr> 
       <td align="center" bgcolor="#EEFEE0">说明： 
         <input type="text" name="strAdExplain" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" size="25"></td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#EEFEE0">最大显示： 
+        <input name="AdStopShow" type="text" value="0" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" size="10">
+        0为无限制，满足则停止</td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#EEFEE0">最大点击： 
+        <input name="AdStopClick" type="text" value="0" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" size="10">
+        0为无限制，满足则停止</td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#EEFEE0">终止日期： 
+        <input name="AdStopDateTime" type="text" value="0" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt" size="10">
+        0为无限制，满足则停止</td>
     </tr>
     <tr> 
       <td align="center" bgcolor="#EEFEE0"> <input type="submit" name="Submit" value="提交" style="BACKGROUND-COLOR: #EEFEE0; BORDER: 1 SOLID; FONT-SIZE: 9pt">

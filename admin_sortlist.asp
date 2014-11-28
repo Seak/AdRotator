@@ -16,6 +16,12 @@
     <td><font color="#FFFFFF">分类列表</font></td>
     <td><div align="center"><font color="#FFFFFF">操作</font></div></td>
   </tr>
+  <tr> 
+    <td width="15%" bgcolor="#EEFEE0">0</td>
+    <td width="60%" bgcolor="#EEFEE0">共享分类</td>
+    <td width="25%" bgcolor="#EEFEE0"><font color="#000000"><s>编辑</s></font>　<font color="#000000"><s>删除</s></font> 
+    </td>
+  </tr>
 <%
 ConnectionDatabase
 

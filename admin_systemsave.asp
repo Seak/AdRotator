@@ -4,12 +4,12 @@
 <%
 NewAdmName = Request.Form("AdmName")
 NewAdmPassword = Request.Form("AdmPassword")
-NewPath = Request.Form("Path")
+'NewPath = Request.Form("Path")
 NewRecordPerPage = Request.Form("RecordPerPage")
 
-If NewAdmName <> "" And NewAdmPassword <> "" And NewPath <> "" And NewRecordPerPage <> "" Then
+If NewAdmName <> "" And NewAdmPassword <> "" And NewRecordPerPage <> "" Then
 	ConnectionDatabase
-	Conn.Execute("Update [System] Set AdmName = '"& NewAdmName &"', AdmPassword = '"& NewAdmPassword &"', Path = '"& NewPath &"', RecordPerPage = '"& NewRecordPerPage &"' Where ID= 1")
+	Conn.Execute("Update [System] Set AdmName = '"& NewAdmName &"', AdmPassword = '"& NewAdmPassword &"', RecordPerPage = '"& NewRecordPerPage &"' Where ID= 1")	' Path = '"& NewPath &"',
 	CloseDatabase
 Else
 	Response.Write("<Script>alert('数据填写有误，请核对后重新填写！');history.back();</Script>")

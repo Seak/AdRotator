@@ -11,10 +11,14 @@ strAdExplain = Request.Form("strAdExplain")
 intAdShow = Request.Form("intAdShow")
 intAdClick = Request.Form("intAdClick")
 dtmAddDate = Request.Form("dtmAddDate")
+AdStopShow = Request.Form("AdStopShow")
+AdStopClick = Request.Form("AdStopClick")
+AdStopDateTime = Request.Form("AdStopDateTime")
+If AdStopDateTime = "0" Then AdStopDateTime = dtmAddDate
 
-If ID <> "" And strAdName <> "" And strAdURL <> "" And strAdBanner <> "" And strAdExplain <> "" And intAdShow <> "" And intAdClick <> "" And dtmAddDate <> "" Then
+If ID <> "" And strAdName <> "" And strAdURL <> "" And strAdBanner <> "" And strAdExplain <> "" And intAdShow <> "" And intAdClick <> "" And dtmAddDate <> "" And AdStopShow <> "" And AdStopClick <> "" And AdStopDateTime <> "" Then
 	ConnectionDatabase
-	Conn.Execute("Update [AdList] Set intSortID = '"& intSortID &"', strAdName = '"& strAdName &"', strAdURL = '"& strAdURL &"', strAdBanner = '"& strAdBanner &"', strAdExplain = '"& strAdExplain &"', intAdShow = '"& intAdShow &"', intAdClick = '"& intAdClick &"', dtmAddDate = '"& dtmAddDate &"' Where ID = " & ID)
+	Conn.Execute("Update [AdList] Set intSortID = '"& intSortID &"', strAdName = '"& strAdName &"', strAdURL = '"& strAdURL &"', strAdBanner = '"& strAdBanner &"', strAdExplain = '"& strAdExplain &"', intAdShow = '"& intAdShow &"', intAdClick = '"& intAdClick &"', dtmAddDate = '"& dtmAddDate &"', AdStopShow = '"& AdStopShow &"', AdStopClick = '"& AdStopClick &"', AdStopDateTime = '"& AdStopDateTime &"' Where ID = " & ID)
 	CloseDatabase
 Else
 	Response.Write("<Script>alert('数据填写有误，请核对后重新填写！');history.back();</Script>")

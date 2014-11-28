@@ -7,10 +7,15 @@ strAdName = Server.HTMLEncode(Request.Form("strAdName"))
 strAdURL = Server.HTMLEncode(Request.Form("strAdURL"))
 strAdBanner = Server.HTMLEncode(Request.Form("strAdBanner"))
 strAdExplain = Server.HTMLEncode(Request.Form("strAdExplain"))
+dtmAddDate = Now()
+AdStopShow = Server.HTMLEncode(Request.Form("AdStopShow"))
+AdStopClick = Server.HTMLEncode(Request.Form("AdStopClick"))
+AdStopDateTime = Server.HTMLEncode(Request.Form("AdStopDateTime"))
+If AdStopDateTime = "0" Then AdStopDateTime = dtmAddDate
 
-If strAdName <> "" And strAdURL <> "" And strAdBanner <> "" And strAdExplain <> "" Then
+If strAdName <> "" And strAdURL <> "" And strAdBanner <> "" And strAdExplain <> "" And AdStopShow <> "" And AdStopClick <> "" And AdStopDateTime <> "" Then
 	ConnectionDatabase
-	Conn.Execute("Insert Into [AdList] (intSortID, strAdName, strAdURL, strAdBanner, strAdExplain, dtmAddDate) Values ('"& intSortID &"', '"& strAdName &"', '"& strAdURL &"', '"& strAdBanner &"', '"& strAdExplain &"', Now())")
+	Conn.Execute("Insert Into [AdList] (intSortID, strAdName, strAdURL, strAdBanner, strAdExplain, dtmAddDate, AdStopShow, AdStopClick, AdStopDateTime) Values ('"& intSortID &"', '"& strAdName &"', '"& strAdURL &"', '"& strAdBanner &"', '"& strAdExplain &"', '"& dtmAddDate &"', '"& AdStopShow &"', '"& AdStopClick &"', '"& AdStopDateTime &"')")
 	CloseDatabase
 Else
 	Response.Write("<Script>alert('数据填写有误，请核对后重新填写！');history.back();</Script>")
